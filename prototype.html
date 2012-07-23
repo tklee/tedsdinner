@@ -1,0 +1,51 @@
+<html>
+<head>
+  <title>YouTube Data API via JSON: embedding videos in your site</title>
+  <script type="text/javascript" src="http://swfobject.googlecode.com/svn/trunk/swfobject/swfobject.js"></script>
+  <script type="text/javascript">
+function loadVideo(playerUrl, autoplay) {
+  swfobject.embedSWF(
+      playerUrl + '&rel=1&border=0&fs=1&autoplay=' + 
+      (autoplay?1:0), 'player', '1920', '1280', '9.0.0', false,
+      false, {allowfullscreen: 'true'});
+}
+
+function showMyVideos2(data) {
+  var feed = data.feed;
+  var entries = feed.entry || [];
+  var html = ['<ul class="videos">'];
+  for (var i = 0; i < 1; i++) {
+    var entry = entries[i];
+    var title = entry.title.$t.substr(0, 20);
+    var thumbnailUrl = entries[i].media$group.media$thumbnail[0].url;
+    var playerUrl = entries[i].media$group.media$content[0].url;
+    html.push('<li onclick="loadVideo(\'', playerUrl, '\', true)">',
+              '<span class="titlec">', title, '...</span><br /><img src="', 
+              thumbnailUrl, '" width="130" height="97"/>', '</span></li>');
+  }
+  html.push('</ul><br style="clear: left;"/>');
+  document.getElementById('videos2').innerHTML = html.join('');
+  if (entries.length > 0) {
+    loadVideo(entries[0].media$group.media$content[0].url, false);
+  }
+}
+
+</script>
+<script src="http://www.google.com/uds/api?file=uds.js&v=1.0"
+    type="text/javascript"></script>
+<link href="http://www.google.com/uds/css/gsearch.css"
+    rel="stylesheet" type="text/css"/>
+<script src="http://www.google.com/uds/solutions/videobar/gsvideobar.js"
+    type="text/javascript"></script>
+<link href="http://www.google.com/uds/solutions/videobar/gsvideobar.css"
+    rel="stylesheet" type="text/css"/>
+</head>
+<body>
+  <div id="theHTML">
+  </div>
+  <div id="playerContainer" style="width: 20em; height: 180px; float: left;">
+    <object id="player"></object>
+  </div>
+  <div id="videos2"></div>
+  <script 
+    type="text/javascript" 

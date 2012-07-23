@@ -1,0 +1,32 @@
+#!/bin/bash
+
+use program watch
+kill process google-chrome
+
+var name = $1
+if regular expression po || strip || etc then veto
+
+google-chrome http://www.google.com/search?btnI=I%27m+Feeling+Lucky&ie=UTF-8&oe=UTF-8&q=$1
+
+googled finding the length of youtube video first link stack overflow
+
+video entry contents
+
+http://gdata.youtube.com/feeds/api/videos/videoID
+
+or
+
+append some javascript in the url
+javascript:{{ var e = document(  $CURLEDYOUTUBELINK  ) console.log("videodone")
+
+in watch:
+  if console | grep videodone
+  ssh 192.168.0.1:57
+  then kill google-chrome
+  
+
+fetch guildsanctuary.info/admin | grep searchterm -> searchvar
+
+curl www.google.com/search.etc/searchvar <- linkvar
+
+linkvar += 'javascript: { etc }'   

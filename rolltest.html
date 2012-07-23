@@ -1,0 +1,218 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+	<title>roll.io | txt to youtube</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<link href="http://roll.io/themes/default/stylev2.2.css" type="text/css" rel="stylesheet" />
+	
+	<script type="text/javascript" src="http://roll.io/misc/jquery.js"></script>
+	<script type="text/javascript" src="http://roll.io/misc/swfobject.js"></script>
+	<script type="text/javascript" src="http://roll.io/misc/commonv4.3.js"></script>
+	<link rel="icon" href="http://roll.io/themes/default/images/favico.png" type="image/x-icon"> 
+    <link rel="shortcut icon" href="http://roll.io/themes/default/images/favico.png" type="image/x-icon"> 
+</head>
+<script type="text/javascript">
+	
+	var song_number = 0;
+var song_number = 0;
+var filename = '03072012/1341295227016.txt';
+	
+	$(document).ready(function(){
+		if(location.hash!=="")
+		{
+			var newhash = location.hash;
+			newhash = newhash.substr(1);
+			$.getJSON('controller/controller.php?action=hashtag&hashtag='+newhash, function(data) {
+				song_number = data["song_number"];
+				filename = data["filename"];
+				initialize();
+			});
+		}
+		else
+		{
+			initialize();
+		}
+	});
+</script>
+<body>
+	<div id="whole_wrapper">
+		<div id="logo_wrapper">
+			<div id="logo">
+				<h1><a href="/woxy">roll.io</a></h1>
+				<p>i play youtube videos from lines of text</p>
+			</div>
+			<div id="feed_me">
+				<div id="feed_links_wrapper">
+					<div id="feed_me_title">
+						<h2>feed me:</h2>
+					</div>
+					<div id="feed_me_links">
+						<a href="javascript:void(0)" id="feed_me_upload">upload txt</a> <a href="javascript:void(0)" id="feed_me_enter">enter txt</a> <a href="javascript:void(0)" id="feed_me_url">enter url</a>
+					</div>
+					
+				</div>
+				<!-- <div id="feed_me_url">
+									or add your txt's url to mine (http://roll.io/http://cl.ly/ERA4H)
+								</div> -->
+				<div class="clear_both"></div>
+			</div>
+			<div id="share_links">
+				<div id="share_title">share this playlist</div>
+				<div id="fb_share">
+					<!-- SHARE FACEBOOK START -->
+					<a href="http://www.facebook.com/share.php?u=http://roll.io" target="_blank" title="Share this playlist on facebook"><img src="themes/default/images/share_fb.png" alt="Share on facebook" /></a> 
+					<!-- SHARE FACEBOOK END -->
+				</div>
+				<div id="twitter_post">
+					<a title="Share this playlist on twitter" target="_blank" href="http://twitter.com/home?status=i am listening http://roll.io">
+					<img alt="Twitter'da paylaş" src="themes/default/images/share_twitter.png"></a>
+				</div>
+				<div id="ff_share">
+					<a title="Share this playlist on friendfeed" target="_blank" href="http://www.friendfeed.com/share?url=http://roll.io">
+					<img alt="Friendfeed'de paylaş" src="themes/default/images/share_ff.png"></a>
+				</div>
+				<div id="direct_link">
+					<input type="text" value="http://roll.io" id="holdtext" onClick="select_all();"/>
+				</div>
+			</div>
+		</div>
+		
+		<div id="third_col">
+			
+		</div>
+		<div id="left_col">
+			<div id="right_col">
+				<div id="upload_file">
+				<form enctype="multipart/form-data" action="includes/fileupload.php" method="post">
+					Upload and play your list as txt file!<br/>
+					<input name="uploaded_file" type="file" />
+			   		<input type="submit" value="Upload" /><br/><br>
+				</form>
+				</div>
+				<div id="type_songs">
+	
+			<li>Vengo play:all = Brings 25 videos of Vengo</li>
+_container">
+				<div id='ajaxload'></div>
+			</div>
+
+			
+			<div id="controls">
+				<div class="video_controls">
+					<a href="javascript:void(0);" onclick="gotoandplay(-1);"> &lt;&lt;</a> | 
+				</div>
+				<div class="video_controls">
+					<a href="javascript:void(0);" onclick="gotoandplay(1);"> &gt;&gt;</a> | 
+				</div>
+				
+				<div id="pause" class="video_controls">
+					<a href="javascript:void(0);" onclick="controls('pause');" > Pause</a> | 
+				</div>
+				<div id="play" class="video_controls">
+					<a href="javascript:void(0);" onclick="controls('play');"> Play</a> | 
+				</div>
+				<div id="stop" class="video_controls ">
+					<a href="javascript:void(0);" onclick="controls('stop');"> Stop</a> |
+				</div>
+				<div id="shuffleoff" class="video_controls last">
+					<a href="javascript:void(0);" onclick="controls('shuffleoff');"> Shuffle Off</a> 
+				</div>
+				<div id="shuffleon" class="video_controls last">
+					<a href="javascript:void(0);" onclick="controls('shuffleon');"> Shuffle On</a>
+				</div>
+				<div id="hide">
+					<a href="javascript:void(0);" onclick="resizezero(0);">Hide video</a><br><br>
+				</div>
+			</div>
+
+			
+		</div>
+		<div id="channels">
+			<h2>Try some channels</h2>
+			<ul>
+				<li><a href="javascript:void(0);" onclick="gotochannel('woxy/woxy_'+(Math.floor(Math.random() * 231) - 1)+'.txt');">Woxy</a></li>
+				<li><a href="javascript:void(0);" onclick="gotochannel('cazhareketi/cazhareketi_0.txt');">#cazhareketi</a></li>
+				<!-- <li><a href="javascript:void(0);" onclick="gotochannel('classical music youtube/classical music youtube_0.txt');">#classical music</a></li> -->
+			</ul>
+			<div id="recent">
+	<h2>Popular recent lists</h2>
+	<ul>
+		<li><a alt="3" href="javascript:void(0);" onclick="gotochannel('01072012/13411510291811.txt');">Put It On Bob... (22)</a></li><li><a alt="2" href="javascript:void(0);" onclick="gotochannel('01072012/e0080b9d6ffa35acb85312bf99a557f2.txt');">search.php (1)</a></li><li><a alt="2" href="javascript:void(0);" onclick="gotochannel('22062012/fav_songs.txt');">rhcp road trippin (115)</a></li><li><a alt="2" href="javascript:void(0);" onclick="gotochannel('01072012/reagge.txt');">Put It On Bob... (1)</a></li><li><a alt="2" href="javascript:void(0);" onclick="gotochannel('30062012/0fbd2f37b86373f8f483087dbd02ec73.txt');">/1338710284808.txt (1)</a></li><li><a alt="2" href="javascript:void(0);" onclick="gotochannel('03062012/1338710284808.txt');">. Yael Naim Come... (13)</a></li><li><a alt="1" href="javascript:void(0);" onclick="gotochannel('18072011/13110062214039.txt');">sezen aksu tanr... (29)</a></li><li><a alt="1" href="javascript:void(0);" onclick="gotochannel('30122011/13252400813791.txt');">erkin koray senden... (6)</a></li><li><a alt="1" href="javascript:void(0);" onclick="gotochannel('01072012/1341128229513.txt');">agnes obel -... (20)</a></li><li><a alt="1" href="javascript:void(0);" onclick="gotochannel('03072012/1341290217662.txt');">The Strokes -... (25)</a></li><li><a alt="1" href="javascript:void(0);" onclick="gotochannel('31102011/1320064143501.txt');">Maroon 5 &... (49)</a></li><li><a alt="1" href="javascript:void(0);" onclick="gotochannel('02072012/13412384962746.txt');">Cem Ylmaz | "Ben... (25)</a></li>
+	</ul>
+</div>Ylmaz<div id="cookieplaylists">
+				<h2>Your recent lists</h2>
+				<div id="c_list_container">
+					<ul>
+			<li><a href="javascript:void(0);" onclick="gotochannel('03072012/1341295227016.txt');">calvin harris feel s</a></li>calvin</ul>
+			</div>
+					</div>
+	</div>
+
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-2470542-17']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+		<script type="text/javascript">
+	var _sf_async_config={uid:4130,domain:"roll.io"};
+	(function(){
+	  function loadChartbeat() {
+	    window._sf_endpt=(new Date()).getTime();
+	    var e = document.createElement('script');
+	    e.setAttribute('language', 'javascript');
+	    e.setAttribute('type', 'text/javascript');
+	    e.setAttribute('src',
+	       (("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") +
+	       "js/chartbeat.js");
+	    document.body.appendChild(e);
+	  }
+	  var oldonload = window.onload;
+	  window.onload = (typeof window.onload != 'function') ?
+	     loadChartbeat : function() { oldonload(); loadChartbeat(); };
+	})();
+
+	</script>
+
+</body>
+</html>
+			<li>Metallica play:2 = Brings 2 videos of Metallica</li>
+			<li>Metallica play:all page:2 = Brings results between 26 - 50</li>
+		</ul>
+		<br>
+<textarea rows="10" cols="40" id="instant_list">Pink floyd Wish you were here
+Vengo play:all
+David Bowie Space Oddity
+The doors play:2
+Metallica play:6
+The Doors Strange days
+Ray Charles Hit the road jack</textarea><br /><br>
+<input type="submit" value="Run my list!" id="submit_instant_list"/>
+</div>
+			</div>
+			
+			<div id="enter_url">
+					Enter your text file's url<br/>
+					
+					<input name="urlname" id="urlname" type="text" />
+					<input type="submit" value="Get my txt file" id="submit_url"/><br/><br>
+					<div id="connector_brief">
+						We support txt files, short urls and some services like last.fm, mixpod, grooveshark or wikipedia tracklists<br><br>
+						Examples:
+						<ul id="connectors">
+							<li>http://www.last.fm/user/aerolizer/library/playlists/2qbdj_electronic</li>
+							<li>http://www.last.fm/user/aerolizer/library/loved</li>
+							<li>http://www.mixpod.com/social/2011/06/ballads-playlist</li>
+						<li>http://api.grooveshark.com/feeds/1.0/users/antibiotic/recent_favorite_songs.rss</li>
+							<li>http://en.wikipedia.org/wiki/Greatest_Hits_(Queen_album)</li>
+							<li>http://www.piyote.com/vintage.txt</li>
+							<li>http://www.bit.ly/Ed

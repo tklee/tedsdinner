@@ -1,0 +1,10 @@
+#!/bin/bash
+rm testpage3.html
+cp prototype.html testpage3.html
+
+echo '    src="http://gdata.youtube.com/feeds/api/videos?q=' >> testpage3.html
+echo $1 >> testpage3.html
+echo '&alt=json-in-script&callback=showMyVideos2&max-results=30&format=5">' >> testpage3.html
+echo '  </script>' >> testpage3.html
+echo '</body>' >> testpage3.html
+echo '</html>' >> testpage3.html

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#curl https://www.google.com/#hl=en&sclient=psy-ab&q=calvin+harris+so+close+youtube&oq=calvin+harris+so+close+youtube&gs_l=hp.3..0j0i8i30l3.1900.10993.0.11103.44.21.7.15.17.1.205.2498.6j13j1.20.0...0.0.DlGK_rxf89g&pbx=1&bav=on.2,or.r_gc.r_pw.r_cp.r_qf.,cf.osb&fp=54147a6c24560a3&biw=720&bih=696
+curl 'http://www.google.com/search?btnI=I%27m+Feeling+Lucky&ie=UTF-8&oe=UTF-8&q=Calvin+Harris+So+Close+Youtube'
+

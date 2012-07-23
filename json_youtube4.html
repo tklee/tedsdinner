@@ -1,0 +1,33 @@
+$.each(data.feed.entry, function(i, item) {
+
+var title = item['title']['$t'];
+var video = item['id']['$t'];
+
+
+video = video.replace('http://gdata.youtube.com/feeds/api/videos/','http://www.youtube.com/v/');  //replacement of link
+videoID = video.replace('http://www.youtube.com/v/',''); // removing link and getting the video ID
+$('#mybox').append('<a href="'+video+'"></a> -'+videoID+'<br/> ');
+video += '?autoplay=1';
+
+
+//setTimeout(function() {
+//  window.location.replace = video;
+//}, 2000);
+
+setTimeout(function() {
+  window.location.href = video;
+}, 2000);
+});
+
+});
+
+
+});
+</script>
+</head>
+
+<body>
+<div id="mybox"></div>
+<br/><br/>
+</body>
+</html>

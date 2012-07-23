@@ -1,0 +1,31 @@
+#!/bin/bash
+
+var1=$(curl http://ec2-23-22-161-223.compute-1.amazonaws.com/admin | grep '<h1>')
+echo $var1
+#reg=`echo $var1 | awk '{n=/[<h1>(.*?)<\/h1>]/};'`
+#reg=`echo $var1 | sed -n '/<h1>/,/<\/h1>/p'`
+#reg=`echo $var1 | awk '{n=/[^(<h>)].+[^(<\/h>)]/};{print n}'`
+#echo $reg
+a='http://www.google.com/search?btnI=I%27m+Feeling+Lucky&ie=UTF-8&oe=UTF-8&q='
+b=$reg
+c=$a$var1
+echo "this is the length of the string"
+var2=${#var1}
+echo $var2
+var4=$((var2-9))
+var3=${var1:4:$var4}
+echo "this should not be 1"
+echo $reg
+#echo $b
+echo "THIS IS VAR1 OR THE STRING TO SUBSTRING"
+echo $var1
+echo "THIS IS VAR3 OR THE SUBSTRING"
+echo $var3
+d=$a$var3
+#echo $reg
+
+echo "THIS IS WHAT CHROME POINTS TO"
+echo $d
+/usr/bin/open -a "/Applications/Google Chrome.app" $d
+#/usr/bin/open -a "/Applications/Google Chrome.app" http://www.google.com/search?btnI=I%27m+Feeling+Lucky&ie=UTF-8&oe=UTF-8&q=$c
+#/usr/bin/open -a "/Applications/Google Chrome.app" http://yahoo.com 

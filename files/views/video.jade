@@ -1,0 +1,103 @@
+html
+  head
+    script(type='text/javascript', src='http://swfobject.googlecode.com/svn/trunk/swfobject/swfobject.js')
+    script(type='text/javascript')
+      function loadVideo(playerUrl, autoplay) {
+      swfobject.embedSWF(
+      playerUrl + '&rel=1&border=0&fs=1&autoplay=' +
+      (autoplay?1:0), 'player', '290', '250', '9.0.0', false,
+      false, {allowfullscreen: 'true'});
+      }
+      function showMyVideos(data) {
+      var feed = data.feed;
+      var entries = feed.entry || [];
+      var html = ['<ul>'];
+      for (var i = 0; i < entries.length; i++) {
+      var entry = entries[i];
+      var title = entry.title.$t;
+      html.push('<li>', title, '</li>');
+      }
+      html.push('</ul>');
+      document.getElementById('videos').innerHTML = html.join('');
+      }
+      function showMyVideos2(data) {
+      var feed = data.feed;
+      var entries = feed.entry || [];
+      var html = ['<ul class="videos">'];
+      for (var i = 0; i < entries.length; i++) {
+      var entry = entries[i];
+      var title = entry.title.$t.substr(0, 20);
+      var thumbnailUrl = entries[i].media$group.media$thumbnail[0].url;
+      var playerUrl = entries[i].media$group.media$content[0].url;
+      html.push('<li onclick="loadVideo(\\'', playerUrl, '\', true)">',
+      '<span class="titlec">', title, '...</span><br /><img src="',
+      thumbnailUrl, '" width="130" height="97"/>', '</span></li>');
+      }
+      html.push('</ul><br style="clear: left;"/>');
+      document.getElementById('videos2').innerHTML = html.join('');
+      if (entries.length > 0) {
+      loadVideo(entries[0].media$group.media$content[0].url, false);
+      }
+      }
+    script(src='http://www.google.com/uds/api?file=uds.js&v=1.0', type='text/javascript')
+    link(href='http://www.google.com/uds/css/gsearch.css', rel='stylesheet', type='text/css')
+    script(src='http://www.google.com/uds/solutions/videobar/gsvideobar.js', type='text/javascript')
+    link(href='http://www.google.com/uds/solutions/videobar/gsvideobar.css', rel='stylesheet', type='text/css')
+    style
+      pre {
+      background-color:#FAFAFA;
+      border:1px solid #BBBBBB;
+      font-size:9pt;
+      line-height:125%;
+      margin:1em 0pt 0pt;
+      overflow:auto;
+      padding:0.99em;
+      }
+      code, pre {
+      color:#007000;
+      font-family:monospace;
+      }
+      .titlec {
+      font-size: small;
+      }
+      ul.videos li {
+      float: left;
+      width: 10em;
+      margin-bottom: 1em;
+      }
+      ul.videos
+      {
+      margin-bottom: 1em;
+      padding-left : 0em;
+      margin-left: 0em;
+      list-style: none;
+      }
+      #videoBar {
+      width : 160px;
+      margin-right: 5px;
+      margin-left: 5px;
+      padding-top : 4px;
+      padding-right : 4px;
+      padding-left : 4px;
+      padding-bottom : 0px;
+      }
+  body
+    #videos
+    script(type='text/javascript', src='http://gdata.youtube.com/feeds/api/videos?q=Calvin+Harris+Feel+So+Close&alt=json-in-script&callback=showMyVideos2&max-results=30&format=5')
+        
+    #theHTML
+    #playerContainer(style='width: 20em; height: 180px; float: left;')
+      object#player
+    #videos2
+    script(type='text/javascript', src='http://gdata.youtube.com/feeds/api/videos?q=Calvin+Harris+Feel+So+Close&alt=json-in-script&callback=showMyVideos2&max-results=30&format=5')
+        
+    #videoBar Loading...
+    script(type='text/javascript')
+      // Create a Video Bar with a floating, auto-positioned player
+      vbr = new GSvideoBar(
+      document.getElementById("videoBar"),
+      GSvideoBar.PLAYER_ROOT_FLOATING,
+      {horizontal: true, largeResultSet: false}
+      );
+      vbr.execute('ytchannel:GoogleDevelopers');
+

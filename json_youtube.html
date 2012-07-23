@@ -1,0 +1,19 @@
+ &lt; !DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+ 
+<script src="http://code.jquery.com/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">// < ![CDATA[
+// < ![CDATA[
+$(document).ready(function(){
+$.getJSON('http://gdata.youtube.com/feeds/api/videos?q=love&#038;alt=json-in-script&#038;callback=?&#038;max-results=12&#038;start-index=1', function(data) {
+$.each(data.feed.entry, function(i, item) {
+var title = item['title']['$t'];
+var video = item['id']['$t'];
+video = video.replace('http://gdata.youtube.com/feeds/api/videos/','http://www.youtube.com/watch?v=');  //replacement of link
+videoID = video.replace('http://www.youtube.com/watch?v=',''); // removing link and getting the video ID
+$('#mybox').append('<a href="'+video+'"> '+title+' -'+videoID+'
+ ');
+});
+});
+});
+// ]]></script>
+<div id="mybox"></div>

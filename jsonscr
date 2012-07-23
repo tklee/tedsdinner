@@ -1,0 +1,9 @@
+#!/bin/bash
+cp youtube3_prototype.html json_youtube3.html
+echo -n '$.getJSON("http://gdata.youtube.com/feeds/api/videos?q=' >> json_youtube3.html
+echo -n $1 >> json_youtube3.html
+echo -n '&alt=json-in-script&callback=?&max-results=1&start-index=1", function(data) {' >> json_youtube3.html
+cat json_youtube4.html >> json_youtube3.html
+
+
+#then something like
